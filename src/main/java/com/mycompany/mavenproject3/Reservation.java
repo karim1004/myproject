@@ -37,12 +37,15 @@ public class Reservation {
              public void setLocaldate(LocalDate checkindate){
             this.checkindate=checkindate;
         }
-             public void setdates(LocalDate checkindate,LocalDate checkoutdate){
-                     if(checkoutdate.isBefore(checkindate)){
-                         System.out.println("checkin must be before checkout");
-                             return;}
-                           this.checkindate=checkindate;
-                                   this.checkoutdate=checkoutdate;
+            public void setdates(LocalDate checkindate, LocalDate checkoutdate) {
+    // If the dates are invalid, we "throw" an error
+    if (checkoutdate.isBefore(checkindate)) {
+        throw new IllegalArgumentException("Check-out date (" + checkoutdate + ") cannot be before check-in date (" + checkindate + ").");
+    }
+
+    this.checkindate = checkindate;
+    this.checkoutdate = checkoutdate;
+
         }
              public Reservationstatus getstatus(){
                  return reservationstatus;}
