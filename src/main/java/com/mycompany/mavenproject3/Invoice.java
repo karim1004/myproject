@@ -18,11 +18,14 @@ public Invoice(double Totalamount,Paymentmethod paymentmethod,LocalDate paymentd
     this.Totalamount=Totalamount;
     this.paymentmethod=paymentmethod;
     this.paymentdate=paymentdate;}
-public void setTotalamount(double Totalamount){
-    if (Totalamount<0){
-        System.out.println("total amount must be greater than zero");
-        return ;}
-    this.Totalamount=Totalamount;}
+public void setTotalamount(double Totalamount) {
+    if (Totalamount < 0) {
+        // We "throw" the exception instead of just printing a message
+        throw new IllegalArgumentException("Total amount cannot be negative: " + Totalamount);
+    }
+    this.Totalamount = Totalamount;
+}
+  
 public double getTotalamount()   {
     return Totalamount;
 }
@@ -33,6 +36,6 @@ public double getTotalamount()   {
     public void setpaymentdate(LocalDate paymentdate){
         this.paymentdate=paymentdate;}
     public LocalDate getpaymentdate(){
-        return paymentdate;}}
+          return paymentdate;}}
     
         
